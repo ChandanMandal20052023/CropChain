@@ -1,8 +1,8 @@
 # CropChain
 
-CropChain is a planned blockchain-based agriculture and food supply chain management system. Its intended goal is farm-to-fork crop traceability for participants including farmers, suppliers, warehouses, transporters, processors, inspectors, retailers, and consumers.
+CropChain is a planned blockchain-based agriculture supply chain management system. Its intended goal is farm-to-fork crop traceability for participants including farmers, suppliers, warehouses, transporters, processors, inspectors, retailers, and consumers.
 
-This repository currently contains the initial project scaffold only. Application behavior, APIs, user interfaces, smart contracts, machine-learning models, and database schemas have not been implemented.
+This repository currently contains the initial project scaffold only. Application behavior, APIs, user interfaces, smart contracts, and database schemas have not been implemented.
 
 ## Technology stack
 
