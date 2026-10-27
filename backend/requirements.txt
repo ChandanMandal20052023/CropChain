@@ -1,0 +1,9 @@
+Django>=5.1,<5.3
+djangorestframework>=3.15.2,<3.17
+djangorestframework-simplejwt>=5.3.1,<6
+django-cors-headers>=4.4,<5
+mysqlclient>=2.2.4,<3
+python-dotenv>=1.0.1,<2
+requests>=2.32,<3
+qrcode[pil]>=7.4.2,<8
+Pillow>=10.3,<12
