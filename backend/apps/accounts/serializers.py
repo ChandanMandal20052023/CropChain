@@ -32,6 +32,24 @@ def validate_unique_email(value, instance=None):
     return value
 
 
+class UserSummarySerializer(serializers.ModelSerializer):
+    """Compact account representation for nesting in other resources."""
+
+    full_name = serializers.CharField(read_only=True)
+    role_label = serializers.CharField(source="get_role_display", read_only=True)
+
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "email",
+            "full_name",
+            "role",
+            "role_label",
+            "organization",
+        )
+
+
 class UserSerializer(serializers.ModelSerializer):
     """Read-only representation of an account."""
 
