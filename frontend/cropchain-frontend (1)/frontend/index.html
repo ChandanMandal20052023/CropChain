@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CropChain – Know Where Your Food Comes From</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css"></head><body>
+<header class="container"><nav class="nav" aria-label="Main"><a class="logo" href="index.html">CropChain</a>
+<a class="link" href="#home">Home</a><a class="link" href="#how">How It Works</a><a class="link" href="#how">Traceability</a><a class="link" href="#how">Technology</a><a class="link" href="#how">About</a>
+<a class="btn btn-pill" href="pages/login.html">Login</a></nav></header>
+<main id="home" class="container hero" style="padding-left:clamp(20px,5vw,80px);padding-right:clamp(20px,5vw,80px)">
+<section><span class="chip">Blockchain-backed farm-to-fork traceability</span>
+<h1>Know Where Your Food Comes From</h1>
+<p class="lead">Follow every crop batch from the farm to your plate. Scan a QR code and verify each handoff, quality check and delivery.</p>
+<form id="trackForm" class="track"><label for="code" class="hidden">Batch ID</label><input id="code" name="code" placeholder="Enter batch ID, e.g. CC-2026-00123" required>
+<button class="btn btn-primary">Track a Product</button><a class="btn btn-outline" href="#how">Explore How It Works</a></form></section>
+<aside class="card" aria-label="Product passport preview"><div class="eyebrow">Product passport · demo data</div><h2 style="margin:8px 0;color:var(--forest)">Basmati Rice</h2>
+<p style="color:var(--mute);margin:0 0 12px">Batch ID: CC-2026-00123</p><span class="badge confirmed">● Confirmed on ledger</span>
+<ol class="timeline"><li><b>Harvested</b><small>Farm, Punjab</small></li><li><b>Collection Center</b><small>Received</small></li><li><b>Warehouse</b><small>Stored</small></li><li class="pending"><b>Processing</b><small>Awaiting confirmation</small></li></ol>
+<a class="btn btn-outline" style="padding:10px 18px;font-size:14px" href="pages/track.html?batch=CC-2026-00123">View full passport</a></aside></main>
+<section id="how" class="journey"><div class="container"><h2>The Journey of Every Batch</h2><div class="stages">
+<div class="stage"><b>1</b><h3>Farmer / Origin</h3><p>Batch created with crop, farm and harvest data</p></div>
+<div class="stage"><b>2</b><h3>Collection Center</h3><p>Intake, weight and grade recorded</p></div>
+<div class="stage"><b>3</b><h3>Warehouse</h3><p>Storage and dispatch checkpoints</p></div>
+<div class="stage"><b>4</b><h3>Processing</h3><p>Yield, packaging and certificates</p></div>
+<div class="stage"><b>5</b><h3>Distribution</h3><p>Custody handoff to retailer</p></div>
+<div class="stage"><b>6</b><h3>Consumer / Trust</h3><p>Scan the QR and verify the journey</p></div></div></div></section>
+<script type="module" src="assets/js/app.js"></script></body></html>

@@ -1,0 +1,10 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/css/styles.css"><title>Dashboard – CropChain</title></head><body><div class="layout"><nav class="sidebar" aria-label="Dashboard"><a class="logo" href="../index.html">CropChain</a>
+<a class="active" href="dashboard.html">Dashboard</a><a href="#batches">Batches</a><a href="#create">Create batch</a><a href="track.html">Public passport</a><a href="login.html">Logout</a></nav>
+<main><h1 style="font-size:30px;margin:0">Farmer dashboard</h1><p id="who" style="color:var(--mute)">Loading…</p><div id="stats" class="stats"></div>
+<section id="batches" class="panel"><h2 style="margin-top:0">Batches</h2><div class="tablewrap"><table><thead><tr><th>Batch ID</th><th>Crop</th><th>Quantity</th><th>Stage</th><th>Status</th></tr></thead>
+<tbody id="rows"><tr><td colspan="5" class="state">Loading batches…</td></tr></tbody></table></div></section>
+<section id="create" class="panel"><h2 style="margin-top:0">Create batch</h2><form id="batchForm"><div class="grid2"><div><label for="crop">Crop</label><input id="crop" name="crop" required></div>
+<div><label for="quantity">Quantity (kg)</label><input id="quantity" name="quantity" type="number" min="1" required></div>
+<div><label for="harvest">Harvest date</label><input id="harvest" name="harvest" type="date" required></div><div><label for="origin">Origin / farm</label><input id="origin" name="origin" required></div></div>
+<button class="btn btn-primary" style="margin-top:20px">Create batch</button><p id="msg" style="margin-top:12px"></p></form></section></main></div>
+<script type="module" src="../assets/js/dashboard.js"></script></body></html>
