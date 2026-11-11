@@ -1,0 +1,39 @@
+{
+  "name": "agrovaani-transporter-network",
+  "version": "1.0.0",
+  "client": {
+    "organization": "TransporterOrg",
+    "connection": {
+      "timeout": { "peer": { "endorser": "300" }, "orderer": "300" }
+    }
+  },
+  "organizations": {
+    "TransporterOrg": {
+      "mspid": "AgroVaaniTransporterMSP",
+      "peers": ["peer0.transporter.agrovaani.com"],
+      "certificateAuthorities": ["ca_transporter"]
+    }
+  },
+  "peers": {
+    "peer0.transporter.agrovaani.com": {
+      "url": "grpcs://localhost:9051",
+      "tlsCACerts": {
+        "path": "crypto-config/peerOrganizations/transporter.agrovaani.com/tlsca/tlsca.transporter.agrovaani.com-cert.pem"
+      },
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.transporter.agrovaani.com",
+        "hostnameOverride": "peer0.transporter.agrovaani.com"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca_transporter": {
+      "url": "https://localhost:9054",
+      "caName": "ca-transporter",
+      "tlsCACerts": {
+        "path": "crypto-config/peerOrganizations/transporter.agrovaani.com/ca/ca.transporter.agrovaani.com-cert.pem"
+      },
+      "httpOptions": { "verify": false }
+    }
+  }
+}

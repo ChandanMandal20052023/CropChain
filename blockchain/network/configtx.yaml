@@ -1,0 +1,286 @@
+# AgroVaani Hyperledger Fabric Network - Channel & Consensus Configuration (configtx.yaml)
+# Channel: agrovaani-channel
+# Ordering: Raft Consensus
+
+---
+Organizations:
+  - &OrdererOrg
+    Name: OrdererOrg
+    ID: OrdererMSP
+    MSPDir: ./crypto-config/ordererOrganizations/orderer.agrovaani.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrdererMSP.admin')"
+    OrdererEndpoints:
+      - orderer.agrovaani.com:7050
+
+  - &FarmerOrg
+    Name: FarmerOrg
+    ID: AgroVaaniFarmerMSP
+    MSPDir: ./crypto-config/peerOrganizations/farmer.agrovaani.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('AgroVaaniFarmerMSP.admin', 'AgroVaaniFarmerMSP.peer', 'AgroVaaniFarmerMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('AgroVaaniFarmerMSP.admin', 'AgroVaaniFarmerMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('AgroVaaniFarmerMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('AgroVaaniFarmerMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.farmer.agrovaani.com
+        Port: 7051
+
+  - &CollectionCenterOrg
+    Name: CollectionCenterOrg
+    ID: AgroVaaniCollectionCenterMSP
+    MSPDir: ./crypto-config/peerOrganizations/collectioncenter.agrovaani.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('AgroVaaniCollectionCenterMSP.admin', 'AgroVaaniCollectionCenterMSP.peer', 'AgroVaaniCollectionCenterMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('AgroVaaniCollectionCenterMSP.admin', 'AgroVaaniCollectionCenterMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('AgroVaaniCollectionCenterMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('AgroVaaniCollectionCenterMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.collectioncenter.agrovaani.com
+        Port: 8051
+
+  - &TransporterOrg
+    Name: TransporterOrg
+    ID: AgroVaaniTransporterMSP
+    MSPDir: ./crypto-config/peerOrganizations/transporter.agrovaani.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('AgroVaaniTransporterMSP.admin', 'AgroVaaniTransporterMSP.peer', 'AgroVaaniTransporterMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('AgroVaaniTransporterMSP.admin', 'AgroVaaniTransporterMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('AgroVaaniTransporterMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('AgroVaaniTransporterMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.transporter.agrovaani.com
+        Port: 9051
+
+  - &WarehouseOrg
+    Name: WarehouseOrg
+    ID: AgroVaaniWarehouseMSP
+    MSPDir: ./crypto-config/peerOrganizations/warehouse.agrovaani.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('AgroVaaniWarehouseMSP.admin', 'AgroVaaniWarehouseMSP.peer', 'AgroVaaniWarehouseMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('AgroVaaniWarehouseMSP.admin', 'AgroVaaniWarehouseMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('AgroVaaniWarehouseMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('AgroVaaniWarehouseMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.warehouse.agrovaani.com
+        Port: 10051
+
+  - &ManufacturerOrg
+    Name: ManufacturerOrg
+    ID: AgroVaaniManufacturerMSP
+    MSPDir: ./crypto-config/peerOrganizations/manufacturer.agrovaani.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('AgroVaaniManufacturerMSP.admin', 'AgroVaaniManufacturerMSP.peer', 'AgroVaaniManufacturerMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('AgroVaaniManufacturerMSP.admin', 'AgroVaaniManufacturerMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('AgroVaaniManufacturerMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('AgroVaaniManufacturerMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.manufacturer.agrovaani.com
+        Port: 11051
+
+  - &InspectorOrg
+    Name: InspectorOrg
+    ID: AgroVaaniInspectorMSP
+    MSPDir: ./crypto-config/peerOrganizations/inspector.agrovaani.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('AgroVaaniInspectorMSP.admin', 'AgroVaaniInspectorMSP.peer', 'AgroVaaniInspectorMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('AgroVaaniInspectorMSP.admin', 'AgroVaaniInspectorMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('AgroVaaniInspectorMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('AgroVaaniInspectorMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.inspector.agrovaani.com
+        Port: 12051
+
+  - &RetailerOrg
+    Name: RetailerOrg
+    ID: AgroVaaniRetailerMSP
+    MSPDir: ./crypto-config/peerOrganizations/retailer.agrovaani.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('AgroVaaniRetailerMSP.admin', 'AgroVaaniRetailerMSP.peer', 'AgroVaaniRetailerMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('AgroVaaniRetailerMSP.admin', 'AgroVaaniRetailerMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('AgroVaaniRetailerMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('AgroVaaniRetailerMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.retailer.agrovaani.com
+        Port: 13051
+
+  - &ConsumerOrg
+    Name: ConsumerOrg
+    ID: AgroVaaniConsumerMSP
+    MSPDir: ./crypto-config/peerOrganizations/consumer.agrovaani.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('AgroVaaniConsumerMSP.admin', 'AgroVaaniConsumerMSP.peer', 'AgroVaaniConsumerMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('AgroVaaniConsumerMSP.admin', 'AgroVaaniConsumerMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('AgroVaaniConsumerMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('AgroVaaniConsumerMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.consumer.agrovaani.com
+        Port: 14051
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_5: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+  Addresses:
+    - orderer.agrovaani.com:7050
+  EtcdRaft:
+    Consenters:
+      - Host: orderer.agrovaani.com
+        Port: 7050
+        ClientTLSCert: ./crypto-config/ordererOrganizations/orderer.agrovaani.com/orderers/orderer.agrovaani.com/tls/server.crt
+        ServerTLSCert: ./crypto-config/ordererOrganizations/orderer.agrovaani.com/orderers/orderer.agrovaani.com/tls/server.crt
+  BatchTimeout: 2s
+  BatchSize:
+    MaxMessageCount: 100
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+  Capabilities:
+    <<: *OrdererCapabilities
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  AgroVaaniChannelProfile:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrdererOrg
+      Capabilities: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *FarmerOrg
+        - *CollectionCenterOrg
+        - *TransporterOrg
+        - *WarehouseOrg
+        - *ManufacturerOrg
+        - *InspectorOrg
+        - *RetailerOrg
+        - *ConsumerOrg
+      Capabilities: *ApplicationCapabilities

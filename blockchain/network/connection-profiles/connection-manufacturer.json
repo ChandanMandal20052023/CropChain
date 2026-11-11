@@ -1,0 +1,39 @@
+{
+  "name": "agrovaani-manufacturer-network",
+  "version": "1.0.0",
+  "client": {
+    "organization": "ManufacturerOrg",
+    "connection": {
+      "timeout": { "peer": { "endorser": "300" }, "orderer": "300" }
+    }
+  },
+  "organizations": {
+    "ManufacturerOrg": {
+      "mspid": "AgroVaaniManufacturerMSP",
+      "peers": ["peer0.manufacturer.agrovaani.com"],
+      "certificateAuthorities": ["ca_manufacturer"]
+    }
+  },
+  "peers": {
+    "peer0.manufacturer.agrovaani.com": {
+      "url": "grpcs://localhost:11051",
+      "tlsCACerts": {
+        "path": "crypto-config/peerOrganizations/manufacturer.agrovaani.com/tlsca/tlsca.manufacturer.agrovaani.com-cert.pem"
+      },
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.manufacturer.agrovaani.com",
+        "hostnameOverride": "peer0.manufacturer.agrovaani.com"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca_manufacturer": {
+      "url": "https://localhost:11054",
+      "caName": "ca-manufacturer",
+      "tlsCACerts": {
+        "path": "crypto-config/peerOrganizations/manufacturer.agrovaani.com/ca/ca.manufacturer.agrovaani.com-cert.pem"
+      },
+      "httpOptions": { "verify": false }
+    }
+  }
+}
