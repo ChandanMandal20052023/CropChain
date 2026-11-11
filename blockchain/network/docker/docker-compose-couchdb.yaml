@@ -1,0 +1,95 @@
+# AgroVaani CouchDB State Database Configuration for 8 Organizations
+version: '3.8'
+
+networks:
+  agrovaani_net:
+    name: agrovaani_net
+
+services:
+  couchdb_farmer:
+    image: couchdb:3.4.2
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - "5984:5984"
+    container_name: couchdb_farmer
+    networks:
+      - agrovaani_net
+
+  couchdb_collectioncenter:
+    image: couchdb:3.4.2
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - "6984:5984"
+    container_name: couchdb_collectioncenter
+    networks:
+      - agrovaani_net
+
+  couchdb_transporter:
+    image: couchdb:3.4.2
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - "7984:5984"
+    container_name: couchdb_transporter
+    networks:
+      - agrovaani_net
+
+  couchdb_warehouse:
+    image: couchdb:3.4.2
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - "8984:5984"
+    container_name: couchdb_warehouse
+    networks:
+      - agrovaani_net
+
+  couchdb_manufacturer:
+    image: couchdb:3.4.2
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - "9984:5984"
+    container_name: couchdb_manufacturer
+    networks:
+      - agrovaani_net
+
+  couchdb_inspector:
+    image: couchdb:3.4.2
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - "10984:5984"
+    container_name: couchdb_inspector
+    networks:
+      - agrovaani_net
+
+  couchdb_retailer:
+    image: couchdb:3.4.2
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - "11984:5984"
+    container_name: couchdb_retailer
+    networks:
+      - agrovaani_net
+
+  couchdb_consumer:
+    image: couchdb:3.4.2
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - "12984:5984"
+    container_name: couchdb_consumer
+    networks:
+      - agrovaani_net

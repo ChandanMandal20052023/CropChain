@@ -1,0 +1,109 @@
+# AgroVaani Hyperledger Fabric Network - Cryptographic Identity Configuration
+# 8 Supply-Chain Organizations + Raft Ordering Service
+
+OrdererOrgs:
+  - Name: Orderer
+    Domain: orderer.agrovaani.com
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer.agrovaani.com
+        SANS:
+          - "localhost"
+          - "127.0.0.1"
+
+PeerOrgs:
+  # 1. Farmer Organization
+  - Name: FarmerOrg
+    Domain: farmer.agrovaani.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+        - "127.0.0.1"
+    Users:
+      Count: 2
+
+  # 2. Collection Center Organization
+  - Name: CollectionCenterOrg
+    Domain: collectioncenter.agrovaani.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+        - "127.0.0.1"
+    Users:
+      Count: 2
+
+  # 3. Transporter Organization
+  - Name: TransporterOrg
+    Domain: transporter.agrovaani.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+        - "127.0.0.1"
+    Users:
+      Count: 2
+
+  # 4. Warehouse Organization
+  - Name: WarehouseOrg
+    Domain: warehouse.agrovaani.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+        - "127.0.0.1"
+    Users:
+      Count: 2
+
+  # 5. Manufacturer Organization
+  - Name: ManufacturerOrg
+    Domain: manufacturer.agrovaani.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+        - "127.0.0.1"
+    Users:
+      Count: 2
+
+  # 6. Inspector Organization
+  - Name: InspectorOrg
+    Domain: inspector.agrovaani.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+        - "127.0.0.1"
+    Users:
+      Count: 2
+
+  # 7. Retailer Organization
+  - Name: RetailerOrg
+    Domain: retailer.agrovaani.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+        - "127.0.0.1"
+    Users:
+      Count: 2
+
+  # 8. Consumer Organization
+  - Name: ConsumerOrg
+    Domain: consumer.agrovaani.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - "localhost"
+        - "127.0.0.1"
+    Users:
+      Count: 2
