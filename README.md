@@ -2,13 +2,11 @@
 
 <div align="center">
 
-[![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-2d3748.svg?style=flat-square)]()
 [![Backend](https://img.shields.io/badge/Backend-Django%205.2%20%7C%20DRF-2f855a.svg?style=flat-square)]()
 [![Blockchain](https://img.shields.io/badge/Blockchain-Hyperledger%20Fabric%20v3.1-1a365d.svg?style=flat-square)]()
 [![Smart Contracts](https://img.shields.io/badge/Smart%20Contracts-Go%201.22-00ADD8.svg?style=flat-square)]()
 [![Database](https://img.shields.io/badge/Database-MySQL%208.0%20%7C%20SQLite3-c05621.svg?style=flat-square)]()
 [![Frontend](https://img.shields.io/badge/Frontend-HTML5%20%7C%20CSS3%20%7C%20ES6%20JS-d69e2e.svg?style=flat-square)]()
-[![License](https://img.shields.io/badge/License-MIT-4a5568.svg?style=flat-square)]()
 
 **A digital, farm-to-fork supply chain traceability platform connecting agricultural producers, processors, certifiers, retailers, and consumers through verifiable records and transparent product journeys.**
 
