@@ -1,4 +1,4 @@
-# CropChain: Blockchain Based Agriculture Supply Chain Management system  
+# CropChain: Blockchain Based Agriculture Supply Chain Management System  
 
 <div align="center">
 
