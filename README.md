@@ -1,4 +1,4 @@
-# CropChain: Agriculture & Food Supply Chain Traceability
+# CropChain: Blockchain Based Agriculture Supply Chain Management system  
 
 <div align="center">
 
@@ -359,8 +359,8 @@ CropChain is designed and developed through the collaborative efforts of our cor
 |---|---|---|
 | **Chandan Kumar Mandal** | **Team Lead / Developer** | System Architecture, Blockchain Network Configuration, Go Chaincode, and Backend REST APIs |
 | **Harsh** | **Team Member** | Backend API Engineering, Relational Database Modeling, and Business Logic |
-| **Vaishnavi Jha** | **Team Member** | Frontend User Experience, Public Passport Portal, and Client Integration |
-| **Shyamji Dwivedi** | **Team Member** | Quality Assurance, Test Suite Implementation, and Technical Documentation |
+| **Vaishnavi Jha** | **Team Member** | Frontend User Experience, Public Passport Portal | 
+| **Shyamji Dwivedi** | **Team Member** | Documentation | Research | Report Preperation 
 
 > *The CropChain team is dedicated to building transparent, accessible, and secure digital tools that empower agricultural producers and protect food integrity.*
 
