@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CropChain - Blockchain-backed agricultural supply chain traceability platform.">
+  <title>CropChain – Farm-to-Fork Traceability</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="container">
+    <nav class="nav" aria-label="Main Navigation">
+      <a class="logo" href="index.html">CropChain</a>
+      <a class="link" href="#home">Home</a>
+      <a class="link" href="#how">How It Works</a>
+      <a class="link" href="#traceability">Traceability</a>
+      <a class="link" href="#technology">Technology</a>
+      <a class="link" href="pages/track.html">Track Product</a>
+      <a class="btn btn-pill" href="pages/login.html">Sign In</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <main id="home" class="container hero">
+    <section class="hero-content">
+      <span class="chip">Blockchain-backed farm-to-fork traceability</span>
+      <h1>Know Where Your Food Comes From</h1>
+      <p class="lead">
+        Follow every crop batch from the farm to your plate. Scan a QR code to verify
+        each custody handoff, quality certificate, and logistics milestone on an immutable ledger.
+      </p>
+
+      <!-- Quick Track Form -->
+      <form id="trackForm" class="track" aria-label="Quick Batch Lookup">
+        <label for="code" class="hidden">Batch ID</label>
+        <input 
+          id="code" 
+          name="code" 
+          type="text" 
+          placeholder="Enter batch ID, e.g. CC-2026-00123" 
+          required
+        >
+        <button type="submit" class="btn btn-primary">Track Product</button>
+        <a class="btn btn-outline" href="#how">Explore Journey</a>
+      </form>
+    </section>
+
+    <!-- Product Passport Preview Card -->
+    <aside class="card" aria-label="Product passport live demonstration">
+      <div class="eyebrow">Product Passport · Demo Preview</div>
+      <h2 style="margin: 8px 0; color: var(--forest);">Basmati Rice (Pusa 1121)</h2>
+      <p style="color: var(--mute); margin: 0 0 12px;">Batch Code: <b>CC-2026-00123</b></p>
+      <span class="badge confirmed">● Confirmed on Ledger</span>
+
+      <ol class="timeline" style="margin-top: 18px;">
+        <li>
+          <b>Harvested</b>
+          <small>Green Valley Organic Farm, Punjab</small>
+        </li>
+        <li>
+          <b>Collection Center</b>
+          <small>Quality checked & packed (Grade A)</small>
+        </li>
+        <li>
+          <b>Warehouse</b>
+          <small>Cold storage bay 4B (Ambient temp: 18°C)</small>
+        </li>
+        <li class="pending">
+          <b>Retailer Distribution</b>
+          <small>Awaiting store shelf listing</small>
+        </li>
+      </ol>
+
+      <a class="btn btn-outline" style="padding: 10px 18px; font-size: 14px; width: 100%; text-align: center;" href="pages/track.html?batch=CC-2026-00123">
+        View Full Interactive Passport &rarr;
+      </a>
+    </aside>
+  </main>
+
+  <!-- How It Works Section -->
+  <section id="how" class="journey">
+    <div class="container">
+      <div style="max-width: 680px; margin-bottom: 40px;">
+        <span class="chip" style="background: rgba(255,255,255,0.15); color: #7BCB86;">Farm-to-Fork Journey</span>
+        <h2 style="margin: 12px 0;">The Journey of Every Batch</h2>
+        <p style="color: #C9D8CD; font-size: 16px; margin: 0;">
+          Every agricultural batch undergoes verified milestone entries submitted by authorized participants across the supply chain.
+        </p>
+      </div>
+
+      <div class="stages">
+        <div class="stage">
+          <b>1</b>
+          <h3>Farmer / Origin</h3>
+          <p>Initial harvest recorded with farm GPS coordinates, crop variety, planting date, and initial quantity.</p>
+        </div>
+
+        <div class="stage">
+          <b>2</b>
+          <h3>Collection Center</h3>
+          <p>Intake moisture testing, visual grading, batch acceptance, and standardized container packaging.</p>
+        </div>
+
+        <div class="stage">
+          <b>3</b>
+          <h3>Logistics & Storage</h3>
+          <p>Custody transfer handoffs with vehicle numbers, transit routes, and temperature-controlled warehousing.</p>
+        </div>
+
+        <div class="stage">
+          <b>4</b>
+          <h3>Processing & Lab</h3>
+          <p>Industrial processing, mass-conservation tracking, and accredited quality compliance certificates.</p>
+        </div>
+
+        <div class="stage">
+          <b>5</b>
+          <h3>Retail Distribution</h3>
+          <p>Retail SKU listing, supermarket inventory intake, and point-of-sale customer availability.</p>
+        </div>
+
+        <div class="stage">
+          <b>6</b>
+          <h3>Consumer Trust</h3>
+          <p>Instant QR code scan revealing complete provenance history, certifier signatures, and transaction IDs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Traceability & Technology Summary -->
+  <section id="traceability" class="container" style="padding-top: 64px; padding-bottom: 64px;">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto 48px;">
+      <span class="chip">Enterprise Traceability</span>
+      <h2 style="font-size: 36px; color: var(--forest); margin: 12px 0;">Why Choose CropChain?</h2>
+      <p style="color: var(--mute); font-size: 17px;">
+        Designed to solve real-world agricultural challenges through tamper-resistant distributed ledger technology.
+      </p>
+    </div>
+
+    <div class="stats" style="margin-bottom: 0;">
+      <div class="stat">
+        <b style="color: var(--green);">100%</b>
+        <div style="font-weight: 600; margin-top: 4px;">Provenance Auditability</div>
+        <small style="color: var(--mute);">Direct cryptographic link between farm plots and store shelves.</small>
+      </div>
+      <div class="stat">
+        <b style="color: var(--forest);">Zero</b>
+        <div style="font-weight: 600; margin-top: 4px;">Unauthorized Retrospective Edits</div>
+        <small style="color: var(--mute);">Consortium ledger prevents tampering with historical harvest data.</small>
+      </div>
+      <div class="stat">
+        <b style="color: var(--earth);">Instant</b>
+        <div style="font-weight: 600; margin-top: 4px;">Consumer Verification</div>
+        <small style="color: var(--mute);">No proprietary app required; scan with any standard smartphone camera.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: var(--forest); color: #C9D8CD; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <span style="font-size: 20px; font-weight: 700; color: #fff;">CropChain</span>
+        <p style="margin: 4px 0 0; font-size: 14px;">Blockchain-Based Agriculture Supply Chain Management System</p>
+      </div>
+      <div style="display: flex; gap: 24px; font-size: 14px;">
+        <a href="pages/track.html" style="color: #fff;">Track Batch</a>
+        <a href="pages/login.html" style="color: #fff;">Portal Sign In</a>
+        <a href="../README.md" style="color: #fff;">Documentation</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
+

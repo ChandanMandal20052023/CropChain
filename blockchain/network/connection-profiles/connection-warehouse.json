@@ -1,0 +1,39 @@
+{
+  "name": "agrovaani-warehouse-network",
+  "version": "1.0.0",
+  "client": {
+    "organization": "WarehouseOrg",
+    "connection": {
+      "timeout": { "peer": { "endorser": "300" }, "orderer": "300" }
+    }
+  },
+  "organizations": {
+    "WarehouseOrg": {
+      "mspid": "AgroVaaniWarehouseMSP",
+      "peers": ["peer0.warehouse.agrovaani.com"],
+      "certificateAuthorities": ["ca_warehouse"]
+    }
+  },
+  "peers": {
+    "peer0.warehouse.agrovaani.com": {
+      "url": "grpcs://localhost:10051",
+      "tlsCACerts": {
+        "path": "crypto-config/peerOrganizations/warehouse.agrovaani.com/tlsca/tlsca.warehouse.agrovaani.com-cert.pem"
+      },
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.warehouse.agrovaani.com",
+        "hostnameOverride": "peer0.warehouse.agrovaani.com"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca_warehouse": {
+      "url": "https://localhost:10054",
+      "caName": "ca-warehouse",
+      "tlsCACerts": {
+        "path": "crypto-config/peerOrganizations/warehouse.agrovaani.com/ca/ca.warehouse.agrovaani.com-cert.pem"
+      },
+      "httpOptions": { "verify": false }
+    }
+  }
+}
