@@ -1,15 +1,12 @@
 """Public analytics and batch passport endpoints for CropChain."""
 
-from django.db.models import Q
 from django.utils import timezone
-from rest_framework import generics, status
+from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.audit.models import AuditLog
 from apps.batches.models import Batch
-from apps.batches.permissions import IsBatchOwnerOrAdmin
 
 from .models import BatchToken
 
@@ -23,7 +20,7 @@ class BatchPublicTrackView(APIView):
         try:
             batch = (
                 Batch.objects.select_related("farm", "farm__owner", "created_by")
-                .get(batch_code=batch_code)
+                .get(batch_code=batch_code, is_public=True)
             )
         except Batch.DoesNotExist:
             return Response(
@@ -38,17 +35,8 @@ class BatchPublicTrackView(APIView):
         # exclude: exact coordinates, created_by identity, private notes,
         # the batch code is fine to show but we reuse a token-issued
         # reference where appropriate.
-        private_fields = {
-            "created_by",
-            "farm",
-            "description",
-            "latitude",
-            "longitude",
-            "is_public",
-        }
-
         public_events = []
-        for event in batch.events.select_related("actor").all()[:100]:
+        for event in batch.events.select_related("actor").order_by("occurred_at", "id")[:100]:
             public_events.append(
                 {
                     "event_type": event.event_type,
@@ -56,7 +44,7 @@ class BatchPublicTrackView(APIView):
                     "occurred_at": event.occurred_at.isoformat(),
                     "quantity": event.quantity,
                     "unit": event.unit,
-                    "actor_email": event.actor_email,
+                    "actor_org": event.actor.organization if event.actor else "Supply-chain participant",
                     "blockchain_status": event.blockchain_status,
                     "blockchain_tx_id": event.blockchain_tx_id,
                 }

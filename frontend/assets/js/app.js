@@ -13,7 +13,7 @@ if (CONFIG.DEMO_MODE) {
 
 // Global quick tracking form handler
 const trackForm = document.getElementById('trackForm');
-if (trackForm) {
+if (trackForm && !window.location.pathname.endsWith('/pages/track.html')) {
   trackForm.addEventListener('submit', event => {
     event.preventDefault();
     const input = trackForm.querySelector('#code');

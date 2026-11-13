@@ -56,8 +56,9 @@ export const CONFIG = {
 };
 ```
 
-- **Demo Mode (`DEMO_MODE = true`)**: Runs with simulated supply-chain data, preloaded sample batches, and mock authentication without needing Django or MySQL running.
-- **Live Mode (`DEMO_MODE = false`)**: Communicates with the live Django REST Framework API at `/api/v1/`, sending JWT `Bearer` tokens in the `Authorization` header.
+- **Live Mode (default)**: Communicates with Django at `http://127.0.0.1:8000/api/v1/`, sending JWT `Bearer` tokens in the `Authorization` header.
+- **Demo Mode (opt-in)**: Set `window.CROPCHAIN_DEMO_MODE = true` before the module script to use simulated data and mock authentication.
+- Override the API host by setting `window.CROPCHAIN_API_BASE` before the module script. Add that frontend origin to `CORS_ALLOWED_ORIGINS` in the backend environment.
 
 ### Sample Demo Track Code
 - **`CC-2026-00123`**: Preloaded sample Basmati Rice batch with complete verified timeline from Punjab farm to retail supermarket.

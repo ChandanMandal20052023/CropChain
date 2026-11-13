@@ -266,9 +266,9 @@ cd CropChain
 
 3. **Configure environment variables**:
    ```bash
-   cp .env.example .env
+   cp ../.env.example ../.env
    ```
-   *By default, the backend runs using SQLite3 for rapid local testing. To use MySQL, set `DB_ENGINE=mysql` and update credentials in `.env`.*
+   *The checked-in example uses SQLite for local development. `DB_NAME` may be left empty to use `backend/db.sqlite3`. To use MySQL, set `DB_ENGINE=mysql` and configure the connection values in the root `.env`.*
 
 4. **Run database migrations**:
    ```bash
@@ -297,9 +297,17 @@ cd frontend
 python -m http.server 8080
 ```
 
-Open `http://localhost:8080` in your web browser.
+Open `http://localhost:8080` in your web browser. The frontend connects to the live API at `http://127.0.0.1:8000/api/v1/` by default. Set `window.CROPCHAIN_API_BASE` before the page module scripts to point it at another backend. Demo data is opt-in with `window.CROPCHAIN_DEMO_MODE = true`.
 
-> **Tip**: In `assets/js/api.js`, toggle `CONFIG.DEMO_MODE = false;` to switch from built-in mock demonstration data to the live Django backend API.
+### Run the connected stack with Docker Compose
+
+From the repository root, start MySQL, Django, and the frontend together:
+
+```bash
+docker compose up --build
+```
+
+The frontend is available at `http://localhost:8080`, the API at `http://localhost:8000/api/v1/`, and MySQL data persists in the `mysql_data` volume. Compose applies database migrations on backend startup. These Compose credentials are for local development only; set strong secrets before deploying.
 
 ---
 

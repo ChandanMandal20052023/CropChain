@@ -4,9 +4,9 @@
  */
 
 export const CONFIG = {
-  // Point to Django REST API server; change to relative '/api/v1' if running behind reverse proxy
-  API_BASE: window.CROPCHAIN_API_BASE || 'http://127.0.0.1:8000/api/v1',
-  DEMO_MODE: true // Set to false once the Django backend is running
+  // Override in the page before loading this module when using another host.
+  API_BASE: (window.CROPCHAIN_API_BASE || 'http://127.0.0.1:8000/api/v1').replace(/\/$/, ''),
+  DEMO_MODE: window.CROPCHAIN_DEMO_MODE === true
 };
 
 // Built-in demonstration mock state
@@ -57,6 +57,7 @@ const DEMO = {
       created_at: '2026-10-18T11:15:00Z'
     }
   ],
+  farms: [{ id: 1, farm_code: 'FARM-DEMO01', name: 'Green Valley Organic Farm', is_verified: true }],
   passport: {
     batch_code: 'CC-2026-00123',
     product: 'Basmati Rice (Pusa 1121)',
@@ -181,7 +182,7 @@ function simulateDemo(path, method, body) {
       }
 
       // Batch listing
-      if (path === '/batches/' || path === '/batches') {
+      if (path.startsWith('/batches/') || path === '/batches') {
         if (method === 'POST') {
           const newBatch = {
             id: DEMO.batches.length + 1,
@@ -199,12 +200,33 @@ function simulateDemo(path, method, body) {
         return resolve(DEMO.batches);
       }
 
+      if (path.startsWith('/farms/')) {
+        if (method === 'POST') {
+          const farm = { id: DEMO.farms.length + 1, farm_code: `FARM-DEMO${String(DEMO.farms.length + 1).padStart(2, '0')}`, name: body.name, is_verified: false };
+          DEMO.farms.push(farm);
+          return resolve(farm);
+        }
+        return resolve(DEMO.farms);
+      }
+
       // Public track
       if (path.startsWith('/public/track/')) {
         const parts = path.split('/');
         const code = decodeURIComponent(parts[3] || '').trim().toUpperCase();
         if (code === DEMO.passport.batch_code || code === 'CC-2026-00123') {
-          return resolve(DEMO.passport);
+        return resolve({
+          ...DEMO.passport,
+          crop_name: 'Basmati Rice',
+          variety: 'Pusa 1121',
+          farm: { name: 'Green Valley Organic Farm', region: 'Punjab', district: 'Majitha' },
+          verified: true,
+          public_events: DEMO.passport.events.map(event => ({
+            event_type_label: event.event_type,
+            occurred_at: event.event_time,
+            blockchain_status: event.status.toLowerCase(),
+            blockchain_tx_id: event.tx_id
+          }))
+        });
         }
         return reject(new ApiError(`Batch with code "${code}" not found. Try demo code "CC-2026-00123".`, 404));
       }
@@ -230,7 +252,12 @@ const STATUS_MAP = {
   ATTENTION: ['attention', 'Needs Attention'],
   HARVESTED: ['confirmed', 'Harvested'],
   IN_TRANSIT: ['pending', 'In Transit'],
-  PACKED: ['confirmed', 'Packed']
+  PACKED: ['confirmed', 'Packed'],
+  DRAFT: ['pending', 'Draft'],
+  PROCESSING: ['pending', 'Processing'],
+  DELIVERED: ['confirmed', 'Delivered'],
+  SOLD: ['confirmed', 'Sold'],
+  RECALLED: ['failed', 'Recalled']
 };
 
 export const badge = s => {

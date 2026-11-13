@@ -72,6 +72,23 @@
         </div>
       </section>
 
+      <section id="farmPanel" class="panel" hidden>
+        <h2 style="margin-top:0;font-size:20px;color:var(--forest);">Register a Farm</h2>
+        <p style="color:var(--mute);">Add a farm record before registering harvest batches.</p>
+        <form id="farmForm">
+          <div class="grid2">
+            <div><label for="farmName">Farm Name *</label><input id="farmName" name="name" required></div>
+            <div><label for="farmRegion">State / Region</label><input id="farmRegion" name="region"></div>
+            <div><label for="farmDistrict">District</label><input id="farmDistrict" name="district"></div>
+            <div><label for="farmVillage">Village</label><input id="farmVillage" name="village"></div>
+            <div><label for="farmCountry">Country</label><input id="farmCountry" name="country" value="India"></div>
+            <div><label for="farmSize">Farm Size (hectares)</label><input id="farmSize" name="size_hectares" type="number" min="0.01" step="0.01"></div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-top:16px;">Save Farm</button>
+          <div id="farmMsg" style="margin-top:12px;"></div>
+        </form>
+      </section>
+
       <!-- Create New Batch Form -->
       <section id="create" class="panel">
         <h2 style="margin-top: 0; font-size: 20px; color: var(--forest);">Register New Harvest Batch</h2>
@@ -103,7 +120,9 @@
 
             <div>
               <label for="farmId">Farm Plot Reference *</label>
-              <input id="farmId" name="farmId" placeholder="e.g. 1 or FARM-7A9B1C3D" value="1" required>
+              <select id="farmId" name="farmId" required>
+                <option value="">Loading your farms…</option>
+              </select>
             </div>
 
             <div>
