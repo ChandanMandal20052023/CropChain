@@ -213,11 +213,11 @@ CropChain/
 │       ├── docker/                # Compose definitions (CAs, CouchDB, peers, orderer)
 │       ├── configtx.yaml          # Consortium channel and policy definitions
 │       └── crypto-config.yaml     # Organization identity topology
-├── frontend/                      # Web user interface
-│   └── cropchain-frontend (1)/frontend/
-│       ├── assets/                # Design tokens, CSS styles, and ES6 API modules
-│       ├── pages/                 # Views (login.html, dashboard.html, track.html)
-│       └── index.html             # Landing page and platform overview
+├── frontend/                      # Web user interface (HTML5, CSS3, ES6 JS)
+│   ├── assets/                    # Design tokens, CSS styles, and ES6 API modules
+│   ├── pages/                     # Views (login.html, dashboard.html, track.html)
+│   ├── index.html                 # Landing page and platform overview
+│   └── README.md                  # Frontend documentation
 └── README.md                      # Project documentation (this file)
 ```
 
@@ -293,7 +293,7 @@ cd CropChain
 Serve the frontend using any static HTTP server (required for ES6 modules):
 
 ```bash
-cd "frontend/cropchain-frontend (1)/frontend"
+cd frontend
 python -m http.server 8080
 ```
 
@@ -343,7 +343,7 @@ docker compose -f docker/docker-compose-network.yaml up -d
 | **Chaincode** | Go smart contracts, deterministic state hashing, mass conservation | **Completed** | `blockchain/chaincode/chaincode/` |
 | **Chaincode Tests** | Mock stub unit tests (authorization, packing, hashing, idempotency) | **Completed** | `blockchain/chaincode/tests/` |
 | **Network Config** | Raft consensus, 8 peer MSPs, CouchDB, connection profiles | **Completed** | `blockchain/network/` |
-| **Frontend UI** | Operations dashboard, login, and public QR passport view | **Completed** | `frontend/cropchain-frontend (1)/frontend/` |
+| **Frontend UI** | Operations dashboard, login, and public QR passport view | **Completed** | `frontend/` |
 | **Audit** | Security audit logging model | **In Progress** | `backend/apps/audit/models.py` |
 | **Off-Chain Bridge** | Automated Django-to-Fabric Gateway background listener | **Planned** | `backend/apps/blockchain/` |
 | **Quality Module** | Lab certificate upload & hash verification API | **Planned** | `backend/apps/quality/` |

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Public Product Passport – CropChain</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="container" style="max-width: 800px; padding-top: 36px; padding-bottom: 64px;">
+    <!-- Navigation header -->
+    <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+      <a href="../index.html" class="logo" style="font-weight: 700; font-size: 24px; color: var(--forest);">
+        CropChain
+      </a>
+      <div style="display: flex; gap: 16px; font-size: 14px;">
+        <a href="../index.html" style="color: var(--mute);">Home</a>
+        <a href="login.html" class="btn btn-pill" style="padding: 6px 16px; font-size: 13px;">Sign In</a>
+      </div>
+    </header>
+
+    <h1 style="font-size: clamp(30px, 4vw, 42px); margin: 0 0 10px;">Track a Product</h1>
+    <p style="color: var(--mute); font-size: 16px; margin: 0 0 28px;">
+      Enter a batch identifier or scan a packaging QR code to verify its farm origin and milestone events.
+    </p>
+
+    <!-- Track Form -->
+    <form id="trackForm" class="track" style="margin-bottom: 32px;">
+      <label for="code" class="hidden">Batch Code</label>
+      <input 
+        id="code" 
+        name="code" 
+        type="text" 
+        placeholder="e.g. CC-2026-00123" 
+        required
+      >
+      <button type="submit" class="btn btn-primary">Verify History</button>
+    </form>
+
+    <!-- Passport Results Card -->
+    <div id="result">
+      <div class="state">
+        Enter a batch code above or scan a CropChain product QR code to view its provenance passport.
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../assets/js/track.js"></script>
+</body>
+</html>
+
