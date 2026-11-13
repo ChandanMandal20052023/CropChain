@@ -2,5 +2,6 @@ from django.apps import AppConfig
 
 
 class PublicPortalConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.public_portal'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "apps.public_portal"
+    verbose_name = "Public Portal"

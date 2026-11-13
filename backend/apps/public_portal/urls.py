@@ -1,6 +1,12 @@
-"""URL routes for public consumer portal."""
-
 from django.urls import path
 
-urlpatterns = []
+from . import views
 
+urlpatterns = [
+    # Public batch passport / QR tracking endpoint.
+    path(
+        "public/track/<str:batch_code>/",
+        views.BatchPublicTrackView.as_view(),
+        name="public-track",
+    ),
+]

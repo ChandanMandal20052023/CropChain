@@ -7,6 +7,13 @@ import sys
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+
+    # Ensure the project root is on sys.path so Django can import the apps
+    # package and its submodules regardless of the current working directory.
+    proj_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    if proj_root not in sys.path:
+        sys.path.insert(0, proj_root)
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
